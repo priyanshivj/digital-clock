@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Digital clock</title>
+  </head>
+<style>
+  body{
+    /* background: linear-gradient(45deg, #1870ed 0, #f18f88 100%); */
+    background: linear-gradient(45deg, #1871ede8 0, #f18f88 100%);
+  font-family: 'Montserrat', 'sans-serif';
+  min-height: 98vh; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  }
+  .clock{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    background-color: #080808;
+    border-radius: 5px;
+    padding: 5px 22px;
+    box-shadow: 1px 1px 5px rgba(255,255,255,.15), 0 15px 90px 30px rgba(0,0,0,.25);
+   
+   
+  }
+  #dc{
+    color: #fff;
+    font-size: 50px;
+   
+  }
+</style>
+  <body>
+    <h1>Digital Clock</h1>
+    <div class="clock">
+      <p id="dc"></p>
+    </div>
+   
+    <script>
+      setInterval(function () {
+        let time = new Date();
+        let hours = time.getHours();
+        let minutes = time.getMinutes();
+        let seconds = time.getSeconds();
+        let day_night = "AM";
+        
+        if (hours >= 12) {
+          day_night = "PM";
+          hours = hours - 12;
+        }
+        if (hours === 0) {
+          hours = 12;
+        }
+        
+        if (hours < 10) {
+          hours = "0" + hours;
+        }
+        if (minutes < 10) {
+          minutes = "0" + minutes;
+        }
+        if (seconds < 10) {
+          seconds = "0" + seconds;
+        }
+
+        document.querySelector(
+          "#dc"
+        ).innerHTML = `${hours} : ${minutes} : ${seconds}  : ${day_night} `;
+      }, 1000);
+    </script>
+  </body>
+</html>
